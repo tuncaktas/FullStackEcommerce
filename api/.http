@@ -1,0 +1,16 @@
+
+# GET Request to root
+GET http://localhost:3000/
+Content-Type: application/json
+
+###
+
+# GET Request to /products
+GET http://localhost:3000/products
+Content-Type: application/json
+
+###
+
+# POST Request to /products
+POST http://localhost:3000/products
+Content-Type: application/json
