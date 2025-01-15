@@ -42,3 +42,28 @@ Content-Type: application/json
 DELETE http://localhost:3000/products/3
 Content-Type: application/json
 
+###
+
+# Regester
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "email": "test4@test.com",
+  "password": "123",
+  "name": "Tunc",
+  "role": "admin"
+}
+
+
+###
+
+# Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "test4@test.com",
+  "password": "123",
+  "balance": 123123
+}
