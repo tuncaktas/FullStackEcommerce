@@ -43,6 +43,13 @@
       "when": 1736867122539,
       "tag": "0005_flimsy_rage",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1737059950904,
+      "tag": "0006_goofy_celestials",
+      "breakpoints": true
     }
   ]
 }
