@@ -1,12 +1,16 @@
-import { FlatList, useWindowDimensions } from 'react-native'
-import products from '@/assets/products.json';
+import { FlatList, ActivityIndicator } from 'react-native'
 import ProductListItem from '@/components/ProductListItem';
 import {useBreakpointValue} from '@/components/ui/utils/use-break-point-value';
+import { useQuery } from '@tanstack/react-query';
+import { listProducts } from '@/api/products';
+import { Text } from '@/components/ui/text';
 
 
 export default function HomeScreen() {
-  // const { width } = useWindowDimensions();
-  // const numColumns = width > 700 ? 3: 2;
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['products'],
+    queryFn: listProducts,
+  });
 
   const numColumns = useBreakpointValue({
     default: 2,
@@ -14,11 +18,19 @@ export default function HomeScreen() {
     xl: 4,
   });
 
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
+
+  if (error) {
+    return <Text>Error fetching products</Text>;
+  }
+
   
   return (
       <FlatList 
         key={numColumns} 
-        data={products} 
+        data={data} 
         numColumns={numColumns}
         contentContainerClassName="gap-2 max-w-[960px] mx-auto w-full"
         columnWrapperClassName='gap-2'
