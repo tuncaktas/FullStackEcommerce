@@ -1,6 +1,6 @@
 import { doublePrecision, integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
-import { usersTable } from "./usersSchema";
-import { productsTable } from "./productSchema";
+import { usersTable } from "./usersSchema.js";
+import { productsTable } from "./productSchema.js";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -23,14 +23,16 @@ export const orderItemsTable = pgTable('order_items', {
 });
 
 export const insertOrderSchema = createInsertSchema(ordersTable).omit({
-    id: undefined as never, 
+     /* @ts-ignore */
+    id: true,
     userId: true,
     status: true,
     createAt: true,
 });
 
 export const InsertOrderItemsSchema = createInsertSchema(orderItemsTable).omit({
-    id: undefined as never, 
+     /* @ts-ignore */
+    id: true,
     orderId: true,
 })
 

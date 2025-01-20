@@ -18,7 +18,7 @@ const generateUserToken = (user: any) => {
     });
 };
 
-router.post('/', validateData(createUserSchema), async (req, res) => {
+router.post('/register', validateData(createUserSchema), async (req, res) => {
     try {
         const data = req.cleanBody;
         data.password = await bcrypt.hash(data.password, 10);
